@@ -33,20 +33,30 @@ command -v uv
 
 If present, use uv silently. If absent, ask the user once: install uv or proceed with pip.
 
+## Virtual Environment Preference
+
+- Prefer a shared `.venv-shared` in the current workspace root over repo-local `.venv` directories.
+- Before creating any environment, check whether `.venv-shared` already exists in the current workspace root and reuse it if present.
+- Only fall back to a repo-local environment if the shared environment is unavailable or the user explicitly asks for isolation.
+
 ## Per-Repo Install
 
 ### nuggetizer
 
 ```bash
 # Clone if needed
-git clone git@github.com:castorini/nuggetizer.git && cd nuggetizer
+git clone git@github.com:castorini/nuggetizer.git
 
 # uv path
-uv venv --python 3.11 && source .venv/bin/activate
+test -d .venv-shared || uv venv --python 3.11 .venv-shared
+source .venv-shared/bin/activate
+cd nuggetizer
 uv sync --group dev
 
 # pip path
-python3 -m venv .venv && source .venv/bin/activate
+test -d .venv-shared || python3 -m venv .venv-shared
+source .venv-shared/bin/activate
+cd nuggetizer
 pip install -e .
 pip install pre-commit pytest mypy ruff
 
@@ -58,14 +68,18 @@ nuggetizer doctor --output json
 
 ```bash
 # Clone if needed
-git clone git@github.com:castorini/ragnarok.git && cd ragnarok
+git clone git@github.com:castorini/ragnarok.git
 
 # uv path
-uv venv --python 3.11 && source .venv/bin/activate
+test -d .venv-shared || uv venv --python 3.11 .venv-shared
+source .venv-shared/bin/activate
+cd ragnarok
 uv sync --group dev --extra cloud
 
 # pip path
-python3 -m venv .venv && source .venv/bin/activate
+test -d .venv-shared || python3 -m venv .venv-shared
+source .venv-shared/bin/activate
+cd ragnarok
 pip install -e ".[cloud]"
 pip install pre-commit pytest
 
@@ -77,14 +91,18 @@ ragnarok doctor --output json
 
 ```bash
 # Clone if needed
-git clone git@github.com:castorini/umbrela.git && cd umbrela
+git clone git@github.com:castorini/umbrela.git
 
 # uv path
-uv venv --python 3.11 && source .venv/bin/activate
+test -d .venv-shared || uv venv --python 3.11 .venv-shared
+source .venv-shared/bin/activate
+cd umbrela
 uv sync --group dev --extra cloud
 
 # pip path
-python3 -m venv .venv && source .venv/bin/activate
+test -d .venv-shared || python3 -m venv .venv-shared
+source .venv-shared/bin/activate
+cd umbrela
 pip install -e ".[cloud]"
 pip install pre-commit pytest mypy ruff
 
