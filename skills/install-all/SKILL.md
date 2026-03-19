@@ -1,11 +1,11 @@
 ---
 name: install-all
-description: Set up development environments for nuggetizer, ragnarok, and/or umbrela. Detects which repo you're in or asks. Handles Python 3.11+, uv/pip, clone-if-needed, and smoke tests. Use when onboarding to any Castorini Python repo or setting up multiple repos at once.
+description: Set up development environments for nuggetizer, ragnarok, and/or umbrela. Detects which repo you're in or asks. Handles Python 3.11+, uv/pip, clone-if-needed, and smoke tests. Use when onboarding to one Castorini Python repo, reinstalling a single repo, or setting up multiple repos at once.
 ---
 
-# Castorini Install
+# Install All
 
-Unified development environment setup for the Castorini Python repos.
+Unified development environment setup for the Castorini Python repos, whether the user wants one repo or several.
 
 ## Supported Repos
 
@@ -18,7 +18,8 @@ Unified development environment setup for the Castorini Python repos.
 ## Context Detection
 
 1. If cwd is inside one of the 3 repos (check for `pyproject.toml` with matching project name) → install that one.
-2. If cwd is the monorepo root or elsewhere → ask which repo(s) to install, or install all if the user says so.
+2. If the user explicitly asks for one repo, install only that repo.
+3. If cwd is the monorepo root or elsewhere and the request is ambiguous → ask which repo(s) to install, or install all if the user says so.
 
 ## Prerequisites
 

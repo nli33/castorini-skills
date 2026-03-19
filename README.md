@@ -7,7 +7,7 @@ Claude Code skills for cross-repo workflows in the [Castorini](https://github.co
 | Skill | Purpose |
 |-------|---------|
 | `castorini-cli-reference` | Shared CLI contract (`castorini.cli.v1` envelope, shared flags, exit codes) across nuggetizer, ragnarok, and umbrela |
-| `install-all` | Development environment setup and clone/bootstrap workflow for nuggetizer, ragnarok, and umbrela |
+| `install-all` | Development environment setup and clone/bootstrap workflow for one or more of nuggetizer, ragnarok, and umbrela |
 | `castorini-pipeline` | End-to-end retrieval → rerank → generate → nuggetize → judge pipeline orchestration |
 | `castorini-release` | PyPI/TestPyPI publish workflow for nuggetizer, ragnarok, and umbrela |
 
