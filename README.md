@@ -22,7 +22,7 @@ Add this repo as a skill source in your Claude Code settings:
     "allow": ["Bash(git clone*)"]
   },
   "skillSources": [
-    "git@github.com:ronakice/agent-skills.git"
+    "git@github.com:castorini/agent-skills.git"
   ]
 }
 ```
