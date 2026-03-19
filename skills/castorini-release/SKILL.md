@@ -1,6 +1,9 @@
 ---
 name: castorini-release
-description: Use when publishing nuggetizer, ragnarok, or umbrela to PyPI or TestPyPI — covers version bumping, build verification, twine checks, TestPyPI dry-run, and production PyPI publish. Use before or during a release cycle.
+description: Use when publishing nuggetizer, ragnarok, or umbrela to PyPI or TestPyPI and you need the release sequence for version bumps, build checks, twine validation, TestPyPI dry-runs, or final production publishing.
+metadata:
+  version: 0.1.0
+  visibility: public
 ---
 
 # Castorini Release

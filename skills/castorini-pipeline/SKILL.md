@@ -1,6 +1,9 @@
 ---
 name: castorini-pipeline
-description: Use when orchestrating a full Castorini evaluation pipeline — retrieve → rerank → generate → nuggetize → judge. Covers stage handoffs, JSONL format compatibility between repos, and end-to-end workflow coordination across ragnarok, nuggetizer, and umbrela.
+description: Use when coordinating an end-to-end Castorini pipeline across ragnarok, nuggetizer, and umbrela, especially for stage handoffs, JSONL compatibility, retrieval-to-answer evaluation flow, or reproducing a multi-stage experiment.
+metadata:
+  version: 0.1.0
+  visibility: public
 ---
 
 # Castorini Pipeline

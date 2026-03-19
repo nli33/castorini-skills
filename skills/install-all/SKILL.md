@@ -1,6 +1,9 @@
 ---
 name: install-all
-description: Set up development environments for nuggetizer, ragnarok, and/or umbrela. Detects which repo you're in or asks. Handles Python 3.11+, uv/pip, clone-if-needed, and smoke tests. Use when onboarding to one Castorini Python repo, reinstalling a single repo, or setting up multiple repos at once.
+description: Use when onboarding to nuggetizer, ragnarok, or umbrela and you need development environment setup for one repo or several repos at once, including clone-if-needed, uv or pip installation paths, shared virtualenv reuse, and smoke tests.
+metadata:
+  version: 0.1.0
+  visibility: public
 ---
 
 # Install All

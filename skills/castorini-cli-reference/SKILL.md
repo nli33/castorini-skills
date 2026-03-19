@@ -1,6 +1,9 @@
 ---
 name: castorini-cli-reference
-description: Use when building, debugging, or reviewing CLI commands across nuggetizer, ragnarok, or umbrela — covers the shared castorini.cli.v1 JSON envelope, common flags, exit codes, artifact shapes, and cross-repo consistency expectations.
+description: Use when building, debugging, or reviewing CLI commands across nuggetizer, ragnarok, or umbrela and you need the shared castorini.cli.v1 envelope, common flags, exit codes, artifact shapes, or cross-repo CLI consistency rules.
+metadata:
+  version: 0.1.0
+  visibility: public
 ---
 
 # Castorini CLI Reference
