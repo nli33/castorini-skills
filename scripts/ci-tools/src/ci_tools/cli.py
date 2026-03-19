@@ -1,0 +1,29 @@
+"""Top-level ci-tools Typer application."""
+from __future__ import annotations
+
+import sys
+
+import typer
+from loguru import logger
+
+from ci_tools.commands.github.cli import github_app
+from ci_tools.commands.release.cli import release_app
+
+app = typer.Typer(
+    name="ci-tools",
+    help="CI tooling for this repository.",
+    no_args_is_help=True,
+)
+
+app.add_typer(release_app, name="release")
+app.add_typer(github_app, name="github")
+
+
+@app.callback()
+def main(
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable debug logging."),
+) -> None:
+    """ci-tools entrypoint."""
+    logger.remove()
+    level = "DEBUG" if verbose else "WARNING"
+    logger.add(sys.stderr, level=level, format="<level>{level}</level>: {message}")
