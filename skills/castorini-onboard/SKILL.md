@@ -1,12 +1,12 @@
 ---
-name: install-all
+name: castorini-onboard
 description: Use when onboarding to nuggetizer, ragnarok, or umbrela and you need development environment setup for one repo or several repos at once, including clone-if-needed, uv or pip installation paths, shared virtualenv reuse, and smoke tests.
 metadata:
   version: 0.1.0
   visibility: public
 ---
 
-# Install All
+# Castorini Onboard
 
 Unified development environment setup for the Castorini Python repos, whether the user wants one repo or several.
 

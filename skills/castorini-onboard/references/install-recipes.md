@@ -1,6 +1,6 @@
 # Per-Repo Install Recipes
 
-Use these only after the `install-all` skill has already triggered and the target repo set is known.
+Use these only after the `castorini-onboard` skill has already triggered and the target repo set is known.
 
 ## nuggetizer
 

@@ -11,7 +11,7 @@ The shared skills in this repository live under `skills/`.
 | Skill | Purpose |
 |-------|---------|
 | `castorini-cli-reference` | Shared CLI contract reference for nuggetizer, ragnarok, and umbrela |
-| `install-all` | Development environment setup for one or more Castorini Python repos |
+| `castorini-onboard` | Development environment setup for one or more Castorini Python repos |
 | `castorini-pipeline` | End-to-end retrieval, generation, nuggetization, and judging workflow coordination |
 | `castorini-release` | PyPI and TestPyPI release workflow guidance for Castorini Python packages |
 
@@ -74,7 +74,7 @@ Supported agents:
 ```bash
 mkdir -p .claude/skills
 ln -s /path/to/agent-skills/skills/castorini-cli-reference .claude/skills/castorini-cli-reference
-ln -s /path/to/agent-skills/skills/install-all .claude/skills/install-all
+ln -s /path/to/agent-skills/skills/castorini-onboard .claude/skills/castorini-onboard
 ln -s /path/to/agent-skills/skills/castorini-pipeline .claude/skills/castorini-pipeline
 ln -s /path/to/agent-skills/skills/castorini-release .claude/skills/castorini-release
 ```
