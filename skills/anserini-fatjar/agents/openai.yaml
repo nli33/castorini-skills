@@ -1,4 +1,4 @@
 interface:
   display_name: "Anserini Fatjar"
-  short_description: "Install and run Anserini from the local 1.6.1-SNAPSHOT fatjar"
-  default_prompt: "Set up Anserini quickly by copying anserini-1.6.1-SNAPSHOT-fatjar.jar from /Users/jimmylin/workspace/anserini/target into the current directory, verify Java runtime, and run smoke test/help commands."
+  short_description: "Install and run Anserini from the latest Maven fatjar"
+  default_prompt: "Use $anserini-fatjar to verify JDK 21 and wget first, warn if prerequisites are not satisfied, then download the latest Anserini fatjar from Maven Central and run the CACM smoke test."
