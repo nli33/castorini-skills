@@ -1,4 +1,4 @@
-# agent-skills
+# castorini-skills
 
 Shared agent skills for cross-repo workflows in the [Castorini](https://github.com/castorini) research ecosystem.
 
@@ -40,7 +40,7 @@ Add this repository as a remote skill source in Claude Code:
     "allow": ["Bash(git clone*)"]
   },
   "skillSources": [
-    "git@github.com:castorini/agent-skills.git"
+    "git@github.com:castorini/castorini-skills.git"
   ]
 }
 ```
@@ -50,10 +50,12 @@ Add this repository as a remote skill source in Claude Code:
 Clone the repository locally:
 
 ```bash
-git clone git@github.com:castorini/agent-skills.git
-cd agent-skills
+git clone git@github.com:castorini/castorini-skills.git
+cd castorini-skills
 ./scripts/install-skills.sh list
 ./scripts/install-skills.sh add -a claude-code
+# For Codex, this installs into ~/.codex/skills by default:
+./scripts/install-skills.sh add -a codex
 # Or install into any directory (each skill becomes a subfolder there):
 ./scripts/install-skills.sh add -d path/workspace/skills
 ```
@@ -77,11 +79,11 @@ Supported agents:
 
 ```bash
 mkdir -p .claude/skills
-ln -s /path/to/agent-skills/skills/anserini-fatjar .claude/skills/anserini-fatjar
-ln -s /path/to/agent-skills/skills/castorini-cli-reference .claude/skills/castorini-cli-reference
-ln -s /path/to/agent-skills/skills/castorini-onboard .claude/skills/castorini-onboard
-ln -s /path/to/agent-skills/skills/castorini-pipeline .claude/skills/castorini-pipeline
-ln -s /path/to/agent-skills/skills/castorini-release .claude/skills/castorini-release
+ln -s /path/to/castorini-skills/skills/anserini-fatjar .claude/skills/anserini-fatjar
+ln -s /path/to/castorini-skills/skills/castorini-cli-reference .claude/skills/castorini-cli-reference
+ln -s /path/to/castorini-skills/skills/castorini-onboard .claude/skills/castorini-onboard
+ln -s /path/to/castorini-skills/skills/castorini-pipeline .claude/skills/castorini-pipeline
+ln -s /path/to/castorini-skills/skills/castorini-release .claude/skills/castorini-release
 ```
 
 ## Updating Skills

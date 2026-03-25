@@ -1,7 +1,7 @@
 [project]
 name = "ci-tools"
 version = "0.1.0"
-description = "CI tooling for the Castorini agent-skills repository"
+description = "CI tooling for the Castorini castorini-skills repository"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
