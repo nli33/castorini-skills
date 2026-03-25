@@ -101,3 +101,10 @@ Then relink or reinstall the skills you use.
 Installed skills add routing context for the agent. A larger installed set gives the model more candidate skills to consider on every request, which can increase trigger overlap and reduce precision.
 
 Prefer installing only the shared skills you actively use in a workspace instead of installing every available skill by default.
+
+## Acknowledgements
+
+This skills package was informed by publicly shared work from others building practical skill systems for coding agents.
+
+- Thariq from Anthropic for sharing [Lessons from Building Claude Code: How We Use Skills](https://x.com/trq212/status/2033949937936085378)
+- Elastic for publishing the open [elastic/agent-skills](https://github.com/elastic/agent-skills) repository
