@@ -120,7 +120,8 @@ agent_dir_for() {
   local agent="$1"
   case "$agent" in
     claude-code) echo "$PWD/.claude/skills" ;;
-    codex|cursor|gemini-cli|github-copilot|cline|opencode) echo "$PWD/.agents/skills" ;;
+    codex) echo "${CODEX_HOME:-$HOME/.codex}/skills" ;;
+    cursor|gemini-cli|github-copilot|cline|opencode) echo "$PWD/.agents/skills" ;;
     windsurf) echo "$PWD/.windsurf/skills" ;;
     roo) echo "$PWD/.roo/skills" ;;
     *) return 1 ;;
@@ -138,7 +139,7 @@ normalize_install_dir() {
 append_unique_target() {
   local candidate="$1"
   local existing
-  for existing in "${INSTALL_TARGETS[@]}"; do
+  for existing in ${INSTALL_TARGETS[@]+"${INSTALL_TARGETS[@]}"}; do
     [ "$existing" = "$candidate" ] && return
   done
   INSTALL_TARGETS+=("$candidate")
@@ -191,12 +192,12 @@ install_skill_to_target() {
 
 should_install_skill() {
   local skill_name="$1"
-  if [ "${#SELECTED_SKILLS[@]}" -eq 0 ]; then
+  if [ "${#SELECTED_SKILLS[@]:-0}" -eq 0 ]; then
     return 0
   fi
 
   local selected
-  for selected in "${SELECTED_SKILLS[@]}"; do
+  for selected in ${SELECTED_SKILLS[@]+"${SELECTED_SKILLS[@]}"}; do
     if [ "$selected" = "$skill_name" ]; then
       return 0
     fi
@@ -206,13 +207,13 @@ should_install_skill() {
 
 validate_requested_skills() {
   local requested
-  for requested in "${SELECTED_SKILLS[@]}"; do
+  for requested in ${SELECTED_SKILLS[@]+"${SELECTED_SKILLS[@]}"}; do
     skill_exists "$requested" || die "Unknown skill '$requested'"
   done
 }
 
 install_selected() {
-  [ "${#AGENTS[@]}" -gt 0 ] || [ "${#TARGET_DIRS[@]}" -gt 0 ] ||
+  [ "${#AGENTS[@]:-0}" -gt 0 ] || [ "${#TARGET_DIRS[@]:-0}" -gt 0 ] ||
     die "add requires at least one -a <agent> or -d <path>"
   validate_requested_skills
 
@@ -220,17 +221,17 @@ install_selected() {
   local agent
   local raw_dir
   local resolved
-  for agent in "${AGENTS[@]}"; do
+  for agent in ${AGENTS[@]+"${AGENTS[@]}"}; do
     if ! resolved="$(agent_dir_for "$agent")"; then
       unsupported_agent_die "$agent"
     fi
     append_unique_target "$resolved"
   done
-  for raw_dir in "${TARGET_DIRS[@]}"; do
+  for raw_dir in ${TARGET_DIRS[@]+"${TARGET_DIRS[@]}"}; do
     append_unique_target "$(normalize_install_dir "$raw_dir")"
   done
 
-  if [ "${#SELECTED_SKILLS[@]}" -eq 0 ]; then
+  if [ "${#SELECTED_SKILLS[@]:-0}" -eq 0 ]; then
     confirm "Install all shared skills into: ${INSTALL_TARGETS[*]}?" || exit 0
   else
     confirm "Install selected skills into: ${INSTALL_TARGETS[*]}?" || exit 0
