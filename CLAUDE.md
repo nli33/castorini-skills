@@ -6,6 +6,7 @@ This repo contains Claude Code skills for cross-repo workflows in the Castorini 
 
 ```
 skills/
+  anserini-fatjar/          # download and run the latest Anserini fatjar quickly
   castorini-cli-reference/   # shared CLI contract docs
   castorini-onboard/         # single-repo or multi-repo clone/bootstrap and environment setup
   castorini-pipeline/        # cross-repo pipeline orchestration

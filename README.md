@@ -10,6 +10,7 @@ The shared skills in this repository live under `skills/`.
 
 | Skill | Purpose |
 |-------|---------|
+| `anserini-fatjar` | Quick Anserini setup and smoke-test workflow via the published fatjar on Maven Central |
 | `castorini-cli-reference` | Shared CLI contract reference for nuggetizer, ragnarok, and umbrela |
 | `castorini-onboard` | Development environment setup for one or more Castorini Python repos |
 | `castorini-pipeline` | End-to-end retrieval, generation, nuggetization, and judging workflow coordination |
@@ -76,6 +77,7 @@ Supported agents:
 
 ```bash
 mkdir -p .claude/skills
+ln -s /path/to/agent-skills/skills/anserini-fatjar .claude/skills/anserini-fatjar
 ln -s /path/to/agent-skills/skills/castorini-cli-reference .claude/skills/castorini-cli-reference
 ln -s /path/to/agent-skills/skills/castorini-onboard .claude/skills/castorini-onboard
 ln -s /path/to/agent-skills/skills/castorini-pipeline .claude/skills/castorini-pipeline
