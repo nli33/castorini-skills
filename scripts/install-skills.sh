@@ -45,6 +45,7 @@ Options for add:
   -h, --help            Show this help.
 
 Supported agents:
+  claude
   claude-code
   codex
   cursor
@@ -115,10 +116,18 @@ unsupported_agent_die() {
   {
     echo "Error: Unsupported agent '$agent'."
     echo "Supported agents:"
-    printf '  %s\n' claude-code codex cursor gemini-cli github-copilot windsurf cline roo opencode
+    printf '  %s\n' claude claude-code codex cursor gemini-cli github-copilot windsurf cline roo opencode
     echo "To install into an arbitrary path, use -d/--dir (not -a/--agent)."
   } >&2
   exit 1
+}
+
+normalize_agent_name() {
+  local agent="$1"
+  case "$agent" in
+    claude) echo "claude-code" ;;
+    *) echo "$agent" ;;
+  esac
 }
 
 agent_root_dir_for() {
@@ -245,6 +254,7 @@ install_selected() {
   local raw_dir
   local resolved
   for agent in ${AGENTS[@]+"${AGENTS[@]}"}; do
+    agent="$(normalize_agent_name "$agent")"
     if ! resolved="$(agent_dir_for "$agent")"; then
       if [ "$INSTALL_LOCATION" = "home" ]; then
         die "Agent '$agent' does not have a supported home-directory target. Use --root or -d <path> instead."
