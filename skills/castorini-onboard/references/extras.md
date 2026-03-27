@@ -28,9 +28,9 @@ pip install -e ".[cloud,api]"
 
 | Extra | Key Packages | Notes |
 |-------|-------------|-------|
-| `cloud` | openai, google-generativeai, tiktoken | API-backed reranking providers |
+| `cloud` | openai, google-generativeai, tiktoken | **Default for dev setup.** API-backed reranking providers |
 | `local` | torch, transformers | Local model inference |
-| `api` | fastapi, flask, uvicorn | HTTP serving; good default with `cloud` for general development |
+| `api` | fastapi, flask, uvicorn | HTTP serving |
 | `mcp` | fastmcp plus reranking extras | MCP server workflow |
 | `vllm` | vllm plus local extras | vLLM-backed local inference |
 | `sglang` | sglang plus local extras | SGLang backend |
@@ -42,8 +42,8 @@ Dev dependencies (via `uv sync --group dev`): pre-commit, pytest, ruff.
 
 Install with extras:
 ```bash
-uv sync --group dev --extra cloud --extra api
-pip install -e ".[cloud,api]"
+uv sync --group dev --extra cloud
+pip install -e ".[cloud]"
 ```
 
 ## umbrela
