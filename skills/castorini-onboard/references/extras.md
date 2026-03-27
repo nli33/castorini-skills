@@ -31,7 +31,7 @@ pip install -e ".[cloud,api]"
 | `cloud` | openai, google-generativeai, tiktoken | API-backed reranking providers |
 | `local` | torch, transformers | Local model inference |
 | `pyserini` | pyserini, faiss-cpu, pandas | Retrieval workflows; requires Java 21 |
-| `api` | fastapi, flask, uvicorn | HTTP serving |
+| `api` | fastapi, flask, uvicorn | HTTP serving; good default with `cloud` for general development |
 | `mcp` | fastmcp plus reranking extras | MCP server workflow |
 | `vllm` | vllm plus local extras | vLLM-backed local inference |
 | `sglang` | sglang plus local extras | SGLang backend |
@@ -43,8 +43,14 @@ Dev dependencies (via `uv sync --group dev`): pre-commit, pytest, ruff.
 
 Install with extras:
 ```bash
-uv sync --group dev --extra cloud --extra pyserini
-pip install -e ".[cloud,pyserini]"
+uv sync --group dev --extra cloud --extra api
+pip install -e ".[cloud,api]"
+```
+
+Add `pyserini` only when the task needs retrieval workflows or Java-backed evaluation:
+```bash
+uv sync --group dev --extra cloud --extra api --extra pyserini
+pip install -e ".[cloud,api,pyserini]"
 ```
 
 ## umbrela

@@ -53,7 +53,7 @@ Either `path` or `data` is present, not both.
 
 ## JSONL Conventions
 
-`nuggetizer`, `ragnarok`, and `umbrela` use JSONL (one JSON object per line) as the primary batch format. `rank_llm` also reads and writes JSONL artifacts, but its CLI frequently returns inline `data` artifacts in the envelope for introspection and summary commands.
+All four repos support JSONL (one JSON object per line) as a primary batch format. `rank_llm` also frequently returns inline `data` artifacts in the envelope for introspection and summary commands, so not every `rank_llm` command materializes its primary result as a JSONL file.
 
 - Records are independent and can be processed in any order
 - Each record is self-contained (includes `qid` or `topic_id` for identity)

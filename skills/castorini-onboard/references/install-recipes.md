@@ -59,7 +59,7 @@ git clone git@github.com:castorini/rank_llm.git
 test -d .venv-shared || uv venv --python 3.11 .venv-shared
 source .venv-shared/bin/activate
 cd rank_llm
-uv sync --group dev --extra cloud --extra pyserini
+uv sync --group dev --extra cloud --extra api
 rank-llm doctor --output json
 pre-commit install
 ```
@@ -71,7 +71,7 @@ git clone git@github.com:castorini/rank_llm.git
 test -d .venv-shared || python3 -m venv .venv-shared
 source .venv-shared/bin/activate
 cd rank_llm
-pip install -e ".[cloud,pyserini]"
+pip install -e ".[cloud,api]"
 pip install pre-commit pytest ruff
 rank-llm doctor --output json
 pre-commit install
