@@ -9,12 +9,23 @@ description: Install and run Anserini quickly by downloading the latest fatjar f
 
 Use this skill to install and run Anserini quickly by downloading the latest fatjar from Maven Central into the current working directory.
 
+Validation note:
+- Validated on 2026-03-27 against `anserini-1.7.1-fatjar.jar`
+- Verified locally: fatjar download, `cacm-download` reproduction, catalog lookups, `Search` CLI, and `RestServer`
+
 ## Workflow
 
 1. Verify runtime tools.
 2. Download the latest fatjar from Maven Central.
 3. Run smoke test/help command.
 4. Execute target commands.
+
+For a reusable end-to-end check of the documented workflow, run:
+
+```bash
+SKILL_DIR="/path/to/anserini-fatjar"
+bash "$SKILL_DIR/scripts/verify_fatjar_workflow.sh"
+```
 
 ## 1. Verify Runtime Tools
 
@@ -217,6 +228,21 @@ Fatjar invocation:
 ```bash
 ANSERINI_JAR="$(ls -1 anserini-*-fatjar.jar | sort -V | tail -n 1)"
 java -cp "$ANSERINI_JAR" io.anserini.api.RestServer --host 127.0.0.1 --port 8080
+```
+
+On startup, the server prints the route shape:
+
+```text
+GET /v1/{index}/search?query=...&hits=10
+GET /v1/{index}/doc/{docid}
+```
+
+If `{index}` is a filesystem path instead of a prebuilt index name, URL-encode it before sending requests.
+For the local CACM index created by the smoke test, this works:
+
+```bash
+curl -sS 'http://127.0.0.1:8080/v1/indexes%2Flucene-inverted.cacm.download/search?query=computer%20programming&hits=2'
+curl -sS 'http://127.0.0.1:8080/v1/indexes%2Flucene-inverted.cacm.download/doc/CACM-1771'
 ```
 
 If the server cannot bind to the default port `8080`, inform the user explicitly before trying a
