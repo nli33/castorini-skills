@@ -42,8 +42,8 @@ Dev dependencies (via `uv sync --group dev`): pre-commit, pytest, ruff.
 
 Install with extras:
 ```bash
-uv sync --group dev --extra cloud
-pip install -e ".[cloud]"
+uv sync --group dev --extra cloud --extra api
+pip install -e ".[cloud,api]"
 ```
 
 ## umbrela
